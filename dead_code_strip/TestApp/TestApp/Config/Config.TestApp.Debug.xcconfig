@@ -1,0 +1,12 @@
+//-Xlinker 告诉 clang -all_load 参数是传给 ld 的。
+
+//-all_load    全部链接
+//-ObjC        OC相关的代码不要剥离
+//-force_load  指定哪些静态库不要 dead strip
+
+//OTHER_LDFLAGS=-Xlinker -all_load
+//OTHER_LDFLAGS=-Xlinker -ObjC
+
+HPSTATIC_FRAMEWORK_PATH=${BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/HPStaticFramework.framework/HPStaticFramework
+OTHER_LDFLAGS=-Xlinker -force_load $HPSTATIC_FRAMEWORK_PATH
+
